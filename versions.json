@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "updated": "2026-05-30",
+  "repository": "dvj84bz5xh-afk/hermes-toolbox",
+  
+  "tools": {
+    "powershell_7": {
+      "version": "7.4.6",
+      "description": "PowerShell 7 (required by Hermes installer)",
+      "download_urls": {
+        "github_repo": "https://github.com/dvj84bz5xh-afk/hermes-toolbox/releases/download/v1.0/PowerShell-7.4.6-win-x64.msi",
+        "official": "https://github.com/PowerShell/PowerShell/releases/download/v7.4.6/PowerShell-7.4.6-win-x64.msi",
+        "mirror_cn": "https://mirrors.tuna.tsinghua.edu.cn/github-release/PowerShell/PowerShell/v7.4.6/PowerShell-7.4.6-win-x64.msi"
+      },
+      "check_cmd": "pwsh --version",
+      "expected_output": "7.4.6"
+    },
+    "go": {
+      "version": "1.24.2",
+      "description": "Go programming language (for Moon Bridge)",
+      "download_urls": {
+        "github_repo": "https://github.com/dvj84bz5xh-afk/hermes-toolbox/releases/download/v1.0/go1.24.2.windows-amd64.zip",
+        "official": "https://go.dev/dl/go1.24.2.windows-amd64.zip"
+      },
+      "check_cmd": "go version",
+      "expected_output": "go1.24.2"
+    },
+    "hermes": {
+      "version": "0.15.1",
+      "description": "Hermes Agent CLI",
+      "download_urls": {
+        "mirror_cn": "https://res1.hermesagent.org.cn/install.ps1",
+        "official": "https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.ps1"
+      },
+      "install_script": true,
+      "check_cmd": "hermes --version",
+      "expected_output": "v0.15.1"
+    },
+    "claude_code": {
+      "version": "2.1.158",
+      "description": "Claude Code CLI (powered by DeepSeek)",
+      "install_type": "npm",
+      "npm_package": "@anthropic-ai/claude-code",
+      "check_cmd": "claude --version",
+      "expected_output": "2.1.158"
+    },
+    "codex": {
+      "version": "0.135.0",
+      "description": "OpenAI Codex CLI",
+      "install_type": "npm",
+      "npm_package": "@openai/codex",
+      "check_cmd": "codex --version",
+      "expected_output": "0.135.0"
+    },
+    "moon_bridge": {
+      "version": "1.0",
+      "description": "Moon Bridge proxy for Codex + DeepSeek",
+      "install_type": "git_repo",
+      "repo_url": "https://github.com/ZhiYi-R/moon-bridge.git",
+      "needs_go": true,
+      "check_cmd": "dir C:\\Users\\10127\\AppData\\Local\\hermes\\moon-bridge\\config.yml"
+    }
+  },
+
+  "config_templates": {
+    "hermes_env": "https://raw.githubusercontent.com/dvj84bz5xh-afk/hermes-toolbox/main/templates/hermes.env",
+    "hermes_config": "https://raw.githubusercontent.com/dvj84bz5xh-afk/hermes-toolbox/main/templates/hermes.config.yaml"
+  },
+
+  "notes": {
+    "ollama_models": "本地模型因算力限制跳过部署。如需恢复，参考: https://ollama.ac.cn",
+    "api_keys_required": "DeepSeek API Key 需用户在安装后自行填入 .env 文件"
+  }
+}
